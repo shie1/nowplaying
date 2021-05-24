@@ -4,7 +4,6 @@ body {
   margin: 0;
 }
 body .nowplayingcard {
-  background: white;
   min-width: 200px;
   max-width: 20%;
   margin: 0 auto;
@@ -26,8 +25,6 @@ body .nowplayingcard .nowplayingcontainer-inner {
   -ms-border-bottom-left-radius: 3px;
   -o-border-bottom-left-radius: 3px;
   border-bottom-left-radius: 3px;
-
-
   -webkit-border-top-right-radius: 3px;
   -moz-border-top-right-radius: 3px;
   -ms-border-top-right-radius: 3px;
