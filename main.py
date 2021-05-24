@@ -57,6 +57,9 @@ class hello:
                 cover = popen("playerctl metadata | grep ':art'").read().split("              ")[1].split('\n')[0]
             except:
                 cover = "https://i.pinimg.com/originals/ad/be/5f/adbe5f762b5a61c1024223ccb260786d.png"
+                
+            if(os.popen("ls | grep 'static'")):
+                os.system("mkdir static")
             
             if(lastcover != cover):
                 lastcover = cover
