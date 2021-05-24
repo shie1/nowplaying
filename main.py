@@ -67,8 +67,10 @@ class hello:
                 cover = "cover." + cover.split('.')[len(cover.split('.')) - 1]
                 yield f"\n<script>$('img#trackart').attr('src', 'static/{cover}?t={str(i)}');$('script')[$('script').length - 1].remove()</script>"
                 i = i + 1
+                artist = artist.replace('`', '')
+                song = song.replace('`', '')
                 
-            yield f"\n<script>setSong('{artist}','{song}');$('script')[$('script').length - 1].remove()</script>"                
+            yield f"\n<script>setSong(`{artist}`,`{song}`);$('script')[$('script').length - 1].remove()</script>"                
             sleep(.5)
 
 if __name__ == "__main__":
