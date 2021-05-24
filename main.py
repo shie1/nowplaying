@@ -42,8 +42,6 @@ app = MyApplication(urls, globals())
 
 class hello:
     def GET(self, name):
-        if (name == "cover.png"):
-            return web.seeother("static/cover.png")
         yield open(resource_path("page.html"), "r").read().replace("<!--STYLE-->", f"<style>\n{open(resource_path('styles.css'), 'r').read()}\n</style>").replace("<!--CODE-->", f"<script>\n{open(resource_path('code.js'), 'r').read()}\n</script>")
         while True:     
             global lasttitle
@@ -66,8 +64,8 @@ class hello:
                 lasttitle = song
                 db = '\\'
                 os.system(f"cp {cover.replace('file://', '').replace(' ', db)} static/cover.{cover.split('.')[len(cover.split('.')) - 1]}")
-                cover = "cover.png"
-                yield f"\n<script>$('img#trackart').attr('src', 'static/cover.png?t={str(i)}');$('script')[$('script').length - 1].remove()</script>"
+                cover = "cover." + cover.split('.')[len(cover.split('.')) - 1]
+                yield f"\n<script>$('img#trackart').attr('src', 'static/{cover}?t={str(i)}');$('script')[$('script').length - 1].remove()</script>"
                 i = i + 1
                 
             yield f"\n<script>setSong('{artist}','{song}');$('script')[$('script').length - 1].remove()</script>"                
