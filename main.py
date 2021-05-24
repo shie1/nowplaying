@@ -45,16 +45,16 @@ class hello:
         while True: 
             global lastcover           
             try:
-                artist = deEmojify(popen("playerctl metadata | grep ':artist'").read().split("              ")[1].replace('\n', ""))
+                artist = deEmojify(popen("playerctl metadata | grep ':artist'").read().split("              ")[1].split('\n')[0]
             except:
                 artist = "Not found..."
             try:
-                song = deEmojify(popen("playerctl metadata | grep ':title'").read().split("              ")[1].replace('\n', ""))
+                song = deEmojify(popen("playerctl metadata | grep ':title'").read().split("              ")[1].split('\n')[0]
             except:
                 song = "Not playing..."
                 
             try:
-                cover = popen("playerctl metadata | grep ':art'").read().split("              ")[1].replace('\n', "")
+                cover = popen("playerctl metadata | grep ':art'").read().split("              ")[1].split('\n')[0]
             except:
                 cover = "https://i.pinimg.com/originals/ad/be/5f/adbe5f762b5a61c1024223ccb260786d.png"
             
