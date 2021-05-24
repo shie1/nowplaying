@@ -56,7 +56,7 @@ class hello:
                 song = "Not playing..."
                 
             try:
-                cover = popen("playerctl metadata | grep ':art'").read().split("              ")[1].split('\n')[0]
+                cover = popen("playerctl metadata | grep ':artUrl'").read().split("              ")[1].split('\n')[0]
             except:
                 cover = os.getcwd() + "/placeholder.png"
             
