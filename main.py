@@ -60,13 +60,11 @@ class hello:
             except:
                 cover = os.getcwd() + "/placeholder.png"
             
-            if(lasttitle == song):
-                yield "\n<script>$('img').attr('src', '');$('script')[$('script').length - 1].remove()</script>"
+            if(lasttitle != song):
                 lasttitle = song
                 db = '\\'
                 os.system(f"ffmpeg -y -i {cover.replace('file://', '').replace(' ', db)} static/cover.png")
                 cover = "cover.png"
-                yield "\n<script>$('img').attr('src', 'static/cover.png');$('script')[$('script').length - 1].remove()</script>"
                 
             yield f"\n<script>setSong('{artist}','{song}');$('script')[$('script').length - 1].remove()</script>"                
             sleep(.5)
