@@ -62,8 +62,7 @@ class hello:
             
             if(lasttitle != song):
                 lasttitle = song
-                db = '\\'
-                os.system(f"cp {cover.replace('file://', '').replace(' ', db)} static/cover.{cover.split('.')[len(cover.split('.')) - 1]}")
+                os.system(f"cp {cover.replace('file://', '').replace(' ', '%20')} static/cover.{cover.split('.')[len(cover.split('.')) - 1]}")
                 cover = "cover." + cover.split('.')[len(cover.split('.')) - 1]
                 yield f"\n<script>$('img#trackart').attr('src', 'static/{cover}?t={str(i)}');$('script')[$('script').length - 1].remove()</script>"
                 i = i + 1
