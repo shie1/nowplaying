@@ -48,8 +48,6 @@ class hello:
             global i
             try:
                 artist = deEmojify(popen("playerctl metadata | grep ':artist'").read().split("              ")[1].split('\n')[0])
-                if(artist == "100 gecs"):
-                    artist = "autotune chipmunk"
             except:
                 artist = "Not found..."
             try:
