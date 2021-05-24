@@ -4,7 +4,7 @@ import sys, os, re, web
 
 lastcover = ""
 
-if(os.popen("ls | grep 'static'") == ""):
+if(os.popen("ls | grep 'static'").read() == ""):
     os.system("mkdir static")
 
 def resource_path(relative_path):
