@@ -61,8 +61,8 @@ class hello:
             except:
                 cover = "https://i.pinimg.com/originals/ad/be/5f/adbe5f762b5a61c1024223ccb260786d.png"
             
-            if(lastcover != cover):
-                lastcover = cover
+            if(lastsong != song):
+                lastsong = song
                 if(cover.startswith('file')):
                     db = '\\'
                     os.system(f"ffmpeg -y -i {cover.replace('file://', '').replace(' ', db)} static/cover.png")
