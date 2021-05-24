@@ -14,7 +14,6 @@ body .nowplayingcard {
 }
 body .nowplayingcard .nowplayingcontainer-inner {
   width: 100%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   display: inline-block;
   -webkit-border-top-left-radius: 3px;
@@ -27,6 +26,18 @@ body .nowplayingcard .nowplayingcontainer-inner {
   -ms-border-bottom-left-radius: 3px;
   -o-border-bottom-left-radius: 3px;
   border-bottom-left-radius: 3px;
+
+
+  -webkit-border-top-right-radius: 3px;
+  -moz-border-top-right-radius: 3px;
+  -ms-border-top-right-radius: 3px;
+  -o-border-top-right-radius: 3px;
+  border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-bottom-right-radius: 3px;
+  -ms-border-bottom-right-radius: 3px;
+  -o-border-bottom-right-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 body .nowplayingcard .nowplayingcontainer-inner:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
