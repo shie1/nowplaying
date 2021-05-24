@@ -2,8 +2,6 @@ from time import sleep
 from os import popen
 import sys, os, re, web
 
-lastsong = ""
-
 if(os.popen("ls | grep 'static'").read() == ""):
     os.system("mkdir static")
 
@@ -45,8 +43,7 @@ class hello:
         if (name == "cover.png"):
             return web.seeother("static/cover.png")
         yield open(resource_path("page.html"), "r").read().replace("<!--STYLE-->", f"<style>\n{open(resource_path('styles.css'), 'r').read()}\n</style>").replace("<!--CODE-->", f"<script>\n{open(resource_path('code.js'), 'r').read()}\n</script>")
-        while True: 
-            global lastsong           
+        while True:     
             try:
                 artist = deEmojify(popen("playerctl metadata | grep ':artist'").read().split("              ")[1].split('\n')[0])
             except:
@@ -59,15 +56,11 @@ class hello:
             try:
                 cover = popen("playerctl metadata | grep ':art'").read().split("              ")[1].split('\n')[0]
             except:
-                cover = "https://i.pinimg.com/originals/ad/be/5f/adbe5f762b5a61c1024223ccb260786d.png"
+                cover = os.getcwd() + "/placeholder.png"
             
-            if(lastsong != song):
-                lastsong = song
-                if(cover.startswith('file')):
-                    db = '\\'
-                    os.system(f"ffmpeg -y -i {cover.replace('file://', '').replace(' ', db)} static/cover.png")
-                    cover = "cover.png"
-                yield f"\n<script>setCover('{cover}');$('script')[$('script').length - 1].remove()</script>"
+            db = '\\'
+            os.system(f"ffmpeg -y -i {cover.replace('file://', '').replace(' ', db)} static/cover.png")
+            cover = "cover.png"
                 
             yield f"\n<script>setSong('{artist}','{song}');$('script')[$('script').length - 1].remove()</script>"                
             sleep(.5)
