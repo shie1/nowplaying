@@ -39,9 +39,6 @@ body .nowplayingcard .nowplayingcontainer-inner {
   -o-border-bottom-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
-body .nowplayingcard .nowplayingcontainer-inner:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
 body .nowplayingcard .nowplayingcontainer-inner img#trackart {
   max-width: 30%;
   float: left;
