@@ -64,7 +64,8 @@ class hello:
             if(lastcover != cover):
                 lastcover = cover
                 if(cover.startswith('file')):
-                    os.system(f"ffmpeg -y -i {cover.replace('file://', '')} static/cover.png")
+                    db = '\\'
+                    os.system(f"ffmpeg -y -i {cover.replace('file://', '').replace(' ', db)} static/cover.png")
                     cover = "cover.png"
                 yield f"\n<script>setCover('{cover}');$('script')[$('script').length - 1].remove()</script>"
                 
