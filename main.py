@@ -1,6 +1,7 @@
 from time import sleep
 from os import popen
 import sys, os, re, web
+lasttitle = ""
 
 if(os.popen("ls | grep 'static'").read() == ""):
     os.system("mkdir static")
@@ -44,6 +45,7 @@ class hello:
             return web.seeother("static/cover.png")
         yield open(resource_path("page.html"), "r").read().replace("<!--STYLE-->", f"<style>\n{open(resource_path('styles.css'), 'r').read()}\n</style>").replace("<!--CODE-->", f"<script>\n{open(resource_path('code.js'), 'r').read()}\n</script>")
         while True:     
+            global lasttitle
             try:
                 artist = deEmojify(popen("playerctl metadata | grep ':artist'").read().split("              ")[1].split('\n')[0])
             except:
@@ -58,9 +60,11 @@ class hello:
             except:
                 cover = os.getcwd() + "/placeholder.png"
             
-            db = '\\'
-            os.system(f"ffmpeg -y -i {cover.replace('file://', '').replace(' ', db)} static/cover.png")
-            cover = "cover.png"
+            if(lasttitle == song):
+                lasttitle = song
+                db = '\\'
+                os.system(f"ffmpeg -y -i {cover.replace('file://', '').replace(' ', db)} static/cover.png")
+                cover = "cover.png"
                 
             yield f"\n<script>setSong('{artist}','{song}');$('script')[$('script').length - 1].remove()</script>"                
             sleep(.5)
