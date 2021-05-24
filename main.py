@@ -2,7 +2,7 @@ from time import sleep
 from os import popen
 import sys, os, re, web
 
-lastcover = ""
+lastsong = ""
 
 if(os.popen("ls | grep 'static'").read() == ""):
     os.system("mkdir static")
@@ -46,7 +46,7 @@ class hello:
             return web.seeother("static/cover.png")
         yield open(resource_path("page.html"), "r").read().replace("<!--STYLE-->", f"<style>\n{open(resource_path('styles.css'), 'r').read()}\n</style>").replace("<!--CODE-->", f"<script>\n{open(resource_path('code.js'), 'r').read()}\n</script>")
         while True: 
-            global lastcover           
+            global lastsong           
             try:
                 artist = deEmojify(popen("playerctl metadata | grep ':artist'").read().split("              ")[1].split('\n')[0])
             except:
